@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Guess — Game Shelf</title>
+<style>
+  :root {
+    --ink: #12141a;
+    --surface: #1b1e27;
+    --text: #ecebe4;
+    --text-muted: #8b8fa3;
+    --teal: #3fbfb2;
+    --amber: #f2b705;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--ink);
+    color: var(--text);
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+  }
+  .back-link {
+    align-self: flex-start;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .back-link:hover, .back-link:focus-visible {
+    color: var(--teal);
+  }
+  main {
+    width: 100%;
+    max-width: 380px;
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 8px;
+  }
+  p.rules {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0 0 24px;
+    line-height: 1.5;
+  }
+  #guess-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #333748;
+    background: #12141a;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  #guess-input:focus-visible {
+    outline: 2px solid var(--teal);
+  }
+  button {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  #submit-btn {
+    background: var(--amber);
+    color: #1b1e27;
+  }
+  #submit-btn:hover, #submit-btn:focus-visible {
+    filter: brightness(1.08);
+  }
+  #reset-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid #333748;
+    display: none;
+  }
+  #reset-btn:hover, #reset-btn:focus-visible {
+    color: var(--text);
+    border-color: var(--teal);
+  }
+  #message {
+    min-height: 24px;
+    margin: 16px 0;
+    font-size: 15px;
+  }
+  #attempts {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+  <a class="back-link" href="../../index.html">&larr; Back to Game Shelf</a>
+
+  <main>
+    <h1>Number Guess</h1>
+    <p class="rules">I'm thinking of a number between 1 and 50. Can you find it?</p>
+
+    <label for="guess-input" class="visually-hidden" style="display:none;">Your guess</label>
+    <input type="number" id="guess-input" min="1" max="50" placeholder="Enter a number 1–50" autocomplete="off">
+    <button id="submit-btn">Guess</button>
+    <button id="reset-btn">Play again</button>
+
+    <p id="message" role="status" aria-live="polite"></p>
+    <p id="attempts"></p>
+  </main>
+
+  <script>
+    (function () {
+      var target = Math.floor(Math.random() * 50) + 1;
+      var attempts = 0;
+      var won = false;
+
+      var input = document.getElementById('guess-input');
+      var submitBtn = document.getElementById('submit-btn');
+      var resetBtn = document.getElementById('reset-btn');
+      var message = document.getElementById('message');
+      var attemptsEl = document.getElementById('attempts');
+
+      function setMessage(text) {
+        message.textContent = text;
+      }
+
+      function updateAttempts() {
+        attemptsEl.textContent = attempts === 0
+          ? ''
+          : 'Attempts: ' + attempts;
+      }
+
+      function handleGuess() {
+        if (won) return;
+
+        var raw = input.value.trim();
+        var guess = Number(raw);
+
+        if (raw === '' || isNaN(guess) || guess < 1 || guess > 50) {
+          setMessage('Enter a whole number between 1 and 50.');
+          return;
+        }
+
+        attempts += 1;
+        updateAttempts();
+
+        if (guess === target) {
+          won = true;
+          setMessage('🎉 That\'s it! The number was ' + target + '.');
+          submitBtn.disabled = true;
+          input.disabled = true;
+          resetBtn.style.display = 'block';
+        } else if (guess < target) {
+          setMessage('Higher — try a bigger number.');
+        } else {
+          setMessage('Lower — try a smaller number.');
+        }
+
+        input.value = '';
+        input.focus();
+      }
+
+      function handleReset() {
+        target = Math.floor(Math.random() * 50) + 1;
+        attempts = 0;
+        won = false;
+        submitBtn.disabled = false;
+        input.disabled = false;
+        input.value = '';
+        setMessage('');
+        updateAttempts();
+        resetBtn.style.display = 'none';
+        input.focus();
+      }
+
+      submitBtn.addEventListener('click', handleGuess);
+      resetBtn.addEventListener('click', handleReset);
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') handleGuess();
+      });
+    })();
+  </script>
+
+</body>
+</html>

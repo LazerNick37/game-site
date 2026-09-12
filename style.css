@@ -1,0 +1,125 @@
+:root {
+  --ink: #12141a;
+  --surface: #1b1e27;
+  --surface-empty: #161822;
+  --text: #ecebe4;
+  --text-muted: #8b8fa3;
+  --teal: #3fbfb2;
+  --border-empty: #2b2f3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 24px 80px;
+  background: var(--ink);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.shelf-header {
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.wordmark {
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--teal);
+  margin: 0 0 20px;
+}
+
+.shelf-header h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.subtext {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.game-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.tile a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tile a:hover .tile-title,
+.tile a:focus-visible .tile-title {
+  color: var(--teal);
+}
+
+.tile a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+}
+
+.tile-stripe {
+  display: block;
+  height: 6px;
+  background: var(--stripe, var(--border-empty));
+}
+
+.tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  flex: 1;
+}
+
+.tile-title {
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.tile-blurb {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.tile--empty {
+  background: var(--surface-empty);
+  border: 1px dashed var(--border-empty);
+}
+
+.tile--empty .tile-title {
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-title {
+    transition: none;
+  }
+}

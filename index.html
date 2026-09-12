@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Shelf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="shelf-header">
+    <p class="wordmark">GAME SHELF</p>
+    <h1>Pick a cartridge.</h1>
+    <p class="subtext">Click a title below to start playing. New games get added here as tiles.</p>
+  </header>
+
+  <!--
+    HOW TO ADD A NEW GAME:
+    1. Put your game's files in their own folder under /games/, e.g. games/my-new-game/index.html
+    2. Copy one <li class="tile"> block below and update the href, title, and blurb.
+    3. Remove one of the "empty" placeholder tiles if you want to keep the grid tidy.
+  -->
+  <ul class="game-grid">
+
+    <li class="tile" style="--stripe: #F2B705;">
+      <a href="games/number-guess/index.html">
+        <span class="tile-stripe"></span>
+        <span class="tile-body">
+          <span class="tile-title">Number Guess</span>
+          <span class="tile-blurb">Guess the hidden number in as few tries as you can.</span>
+        </span>
+      </a>
+    </li>
+
+    <li class="tile tile--empty">
+      <span class="tile-stripe"></span>
+      <span class="tile-body">
+        <span class="tile-title">More on the way</span>
+        <span class="tile-blurb">This slot is waiting for the next game.</span>
+      </span>
+    </li>
+
+    <li class="tile tile--empty">
+      <span class="tile-stripe"></span>
+      <span class="tile-body">
+        <span class="tile-title">More on the way</span>
+        <span class="tile-blurb">This slot is waiting for the next game.</span>
+      </span>
+    </li>
+
+  </ul>
+
+</body>
+</html>
