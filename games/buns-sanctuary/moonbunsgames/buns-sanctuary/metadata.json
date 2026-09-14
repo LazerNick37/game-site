@@ -1,0 +1,48 @@
+{
+    "game_id": 3856010,
+    "title": "Bun's Sanctuary",
+    "url": "https://moonbunsgames.itch.io/buns-sanctuary",
+    "cover_url": "https://img.itch.zone/aW1nLzIzMDA0MTI4LmdpZg==/original/5Pqdgn.gif",
+    "screenshots": [
+        "https://img.itch.zone/aW1hZ2UvMzg1NjAxMC8yMzAxMTgwNi5naWY=/original/QINMc%2F.gif",
+        "https://img.itch.zone/aW1hZ2UvMzg1NjAxMC8yMzAxMTgwOC5wbmc=/original/WGzFnk.png",
+        "https://img.itch.zone/aW1hZ2UvMzg1NjAxMC8yMzAxMTgwNy5qcGc=/original/EPMD54.jpg",
+        "https://img.itch.zone/aW1hZ2UvMzg1NjAxMC8yMzAxMTgwOS5wbmc=/original/15Kj%2Bx.png"
+    ],
+    "description": "Bun's Sanctuary is an incremental game set in a contaminated ocean. Slay the mutated fish and save the others!",
+    "author": "Moon Buns",
+    "author_url": "https://moonbunsgames.itch.io",
+    "extra": {
+        "status": "Prototype",
+        "platforms": [
+            "HTML5"
+        ],
+        "genre": {
+            "Survival": "https://itch.io/games/tag-survival"
+        },
+        "tools": {
+            "Godot": "https://itch.io/games/made-with-godot"
+        },
+        "tags": {
+            "Casual": "https://itch.io/games/tag-casual",
+            "Clicker": "https://itch.io/games/tag-clicker",
+            "collection": "https://itch.io/games/tag-collection",
+            "Cute": "https://itch.io/games/tag-cute",
+            "Gacha": "https://itch.io/games/tag-gacha",
+            "Incremental": "https://itch.io/games/tag-incremental",
+            "Minimalist": "https://itch.io/games/tag-minimalist",
+            "Survivor-like": "https://itch.io/games/tag-survivor-like",
+            "web": "https://itch.io/games/tag-web"
+        },
+        "length": "About a half-hour",
+        "ai_content_tags": {
+            "No generative AI was used": "https://itch.io/games/tag-no-ai"
+        }
+    },
+    "rating": {
+        "average": 4.7,
+        "votes": 34
+    },
+    "errors": [],
+    "external_downloads": []
+}
